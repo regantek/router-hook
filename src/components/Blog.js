@@ -1,20 +1,38 @@
 import React from "react";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import Recipes from "../components/Blogs/Recipes";
+import Car from "../components/Blogs/Car";
+import Dog from "../components/Blogs/Dog";
 
 const Blog = () => {
+  const { path, url } = useRouteMatch();
+
   return (
     <div>
       <h1>Blog Page</h1>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi at
-      facilis, cumque repellendus, rem quas error magnam, minus tempore deserunt
-      beatae. Possimus repudiandae iste sunt, voluptatum reiciendis blanditiis
-      asperiores voluptas aperiam reprehenderit! Ipsa aliquam rerum vel iste
-      quidem facilis? Nisi mollitia reiciendis vitae ea incidunt? Deserunt
-      magnam, adipisci voluptate ratione vitae, dolore odit beatae nulla
-      praesentium animi perferendis, quo quasi voluptatum. Veniam necessitatibus
-      deleniti repellendus obcaecati perspiciatis dolores fugiat aliquid et quas
-      possimus aliquam, laboriosam fuga voluptas, libero numquam autem ullam
-      molestiae esse! Reiciendis iure modi voluptas numquam fuga quae, officia
-      veniam ipsam ut tempore eos adipisci, beatae totam nesciunt.
+      <ul>
+        <li>
+          <Link to={`${url}/recipes`}>Recipes</Link>
+        </li>
+        <li>
+          <Link to={`${url}/car`}>Car</Link>
+        </li>
+        <li>
+          <Link to={`${url}/dog`}>Dog</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route path={`${path}/recipes`}>
+          <Recipes />
+        </Route>
+        <Route path={`${path}/car`}>
+          <Car />
+        </Route>
+        <Route path={`${path}/dog`}>
+          <Dog />
+        </Route>
+      </Switch>
     </div>
   );
 };
