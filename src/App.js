@@ -6,12 +6,14 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Blog from "./components/Blog";
 import Navbar from "./components/Navbar";
+import Admin from "./components/Admin";
+import { AuthContextProvider } from "./context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute2 from "./components/PrivateRoute2";
 
 const App = () => {
   return (
-    <div>
-      {/* <h1>Router Example</h1> */}
-
+    <AuthContextProvider>
       <Router>
         <Navbar />
         <Switch>
@@ -27,9 +29,13 @@ const App = () => {
           <Route path="/blog">
             <Blog />
           </Route>
+          {/* <PrivateRoute path="/admin">
+            <Admin />
+          </PrivateRoute> */}
+          <PrivateRoute2 path="/admin" component={Admin} />
         </Switch>
       </Router>
-    </div>
+    </AuthContextProvider>
   );
 };
 
